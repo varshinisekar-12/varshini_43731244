@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter App</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f4e1d2; 
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .count-container {
+            background-color: #d3a6f5;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        h1 {
+           
+            color: #4b2f8b;
+            text-align: center;
+            margin: 0;
+        }
+
+        #result {
+            font-size: 3rem;
+            color: #333;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 10px;
+        }
+
+        .round-button {
+            background-color: #7f4c8e; /* A nice purple shade */
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+           
+        }
+
+        .round-button:hover {
+            background-color: #5e347b; 
+        }
+
+        .reset-button {
+            background-color: #4CAF50; 
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            
+        }
+
+        .reset-button:hover {
+            background-color: #45a049; 
+        }
+
+    </style>
+</head>
+<body>
+    <div class="count-container">
+        <h1>Counter</h1>
+    </div>
+
+    <div>
+        <p id="result">0</p>
+
+        <div class="button-container">
+            <button class="round-button" onclick="add()">+1</button>
+            <button class="round-button" onclick="sub()">-1</button>
+        </div>
+
+        <div>
+            <button class="reset-button" onclick="reset()">Reset</button>
+        </div>
+    </div>
+
+    <script>
+        let count = 0;
+
+        function add() {
+            count = count + 1;
+            document.getElementById('result').innerHTML = count;
+        }
+
+        function sub() {
+            count = count - 1;
+            document.getElementById('result').innerHTML = count;
+        }
+
+        function reset() {
+            count = 0;
+            document.getElementById('result').innerHTML = count;
+        }
+    </script>
+</body>
+</html>

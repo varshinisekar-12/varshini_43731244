@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color:#2e0a6c;
+            color: white;
+            padding: 20px  0;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .gallery-item {
+            width: 200px;
+            height: 200px;
+            overflow: hidden;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            transition: transform 0.3s ease, opacity 0.3s ease; 
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease; 
+        }
+
+        
+        .gallery-item:hover {
+            transform: scale(1.05); 
+            opacity: 0.8; 
+        }
+
+        .gallery-item img:hover {
+            transform: scale(1.1); 
+        }
+        footer {
+            background-color: #432a9f;
+            color: white;
+            padding: 15px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>The Beauty of Nature<br>
+        An Art Gallery</h1>
+    </header>
+
+    <div class="gallery">
+        <div class="gallery-item">
+            <img src="https://wallpapercave.com/wp/wp5815956.jpg" alt="Image 1">
+        </div>
+        <div class="gallery-item">
+            <img src="https://wallpaperaccess.com/full/1208920.jpg" alt="Image 2">
+        </div>
+        <div class="gallery-item">
+            <img src="https://th.bing.com/th/id/OIP.r3XqM5Jt1H23OLAYso9olAHaJH?rs=1&pid=ImgDetMain" alt="Image 3">
+        </div>
+        <div class="gallery-item">
+            <img src="https://wallpapercave.com/wp/wp6135216.jpg" alt="Image 4">
+        </div>
+        <div class="gallery-item">
+            <img src="https://th.bing.com/th/id/OIP.tSLEKCRPyqzEabUMlPj8agHaJ4?w=3024&h=4032&rs=1&pid=ImgDetMain" alt="Image 5">
+        </div>
+        <div class="gallery-item">
+            <img src="https://wallpapercave.com/wp/wp5815956.jpg" alt="Image 1">
+        </div>
+        <div class="gallery-item">
+            <img src="https://wallpaperaccess.com/full/1208920.jpg" alt="Image 2">
+        </div>
+        <div class="gallery-item">
+            <img src="https://th.bing.com/th/id/OIP.r3XqM5Jt1H23OLAYso9olAHaJH?rs=1&pid=ImgDetMain" alt="Image 3">
+        </div>
+        <div class="gallery-item">
+            <img src="https://wallpapercave.com/wp/wp6135216.jpg" alt="Image 4">
+        </div>
+        <div class="gallery-item">
+            <img src="https://th.bing.com/th/id/OIP.tSLEKCRPyqzEabUMlPj8agHaJ4?w=3024&h=4032&rs=1&pid=ImgDetMain" alt="Image 5">
+        </div>
+        <div class="gallery-item">
+            <img src="https://i.pinimg.com/originals/c8/d6/bc/c8d6bc6ad3b08172bdbc1665f3ed080b.jpg" alt="Image 4">
+        </div>
+        <div class="gallery-item">
+            <img src="https://th.bing.com/th/id/OIP.tSLEKCRPyqzEabUMlPj8agHaJ4?w=3024&h=4032&rs=1&pid=ImgDetMain" alt="Image 5">
+        </div>
+    </div>
+    <footer>
+        <p style="text-align: center;">@nature's_poem</p>
+    </footer>
+
+</body>
+</html>
