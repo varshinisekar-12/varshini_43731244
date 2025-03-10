@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meal Dash</title>
+    <style>
+        /* Basic Styles (same as before) */
+        body {
+            padding: 0px;
+            margin: 0px;
+            font-family: "Playfair Display", serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: blanchedalmond;
+        }
+        .navbar {
+            width: 100%;
+            height: 50px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+            border: 2px solid black;
+        }
+        .nav-brand {
+            height: 80%;
+            padding: 0px 10px;
+            display: flex;
+            flex-direction: row;
+            justify-content: start;
+            align-items: center;
+            color: darkgreen;
+        }
+        .nav-info {
+            height: 80%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .nav-info > a {
+            padding: 5px 10px;
+            margin: 3px;
+            text-decoration: none;
+            color:darkgreen;
+        }
+        .nav-signup {
+            height: 80%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .nav-signup > img , .nav-signup > button {
+            margin: 10px;
+        }
+        .btn-signup {
+            background-color:beige;
+            padding: 8px 15px;
+            border: 1px solid black;
+            border-radius: 10px;
+            font-family: "Playfair Display", serif;
+            color:darkgreen;
+            font-size: 15px;
+        }
+        .poster {
+            width: 80%;
+            height: 300px;
+            margin: 40px 0px;
+            border-radius: 20px;
+            border: 2px solid black;
+        }
+        .poster-info {
+            width: 100%;
+            height: 300px;
+            border-radius: 20px;
+            background-color: seagreen;
+            margin-top: -304px;
+            color:beige;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: "Playfair Display", serif;
+        }
+        .poster-info > h2 , .poster-info > p {
+            width: 50%;
+            text-align: center;
+            font-family: "Playfair Display", serif;
+            color: darkgreen;
+        }
+        .explore {
+            width: 80%;
+            margin-bottom: 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            color: darkgreen;
+            border-bottom: 1.5px solid #121212;
+        }
+        .explore-items {
+            width: 100%;   
+            height: 270px;    
+            display: flex;     
+            flex-direction: row;    
+            align-items: center;   
+            overflow-y:hidden;          
+            padding: 10px 0;    
+        }
+        .food-item {
+            width: 200px;
+            height: 100%;
+            margin-right: 20px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+        }
+        .food-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .food-item p {
+            font-size: 16px;
+            font-weight: bold;
+            color: darkgreen;
+        }
+        .dishes-container {
+            width: 80%;
+            margin-top: -80px;
+        }
+        .dishes {
+            width: 100%;
+            padding: 10px;
+            display: flex;
+            flex-direction: row;
+            justify-content: start;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .dish {
+            width: 300px;
+            height: 350px;
+            border: 1px solid #121212;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 10px;
+        }
+        .dish-image {
+            height: 50%;
+        }
+        .dish-container {
+            height: 40%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .dish-info {
+            width: 90%;
+        }
+        .dish-desc {
+            margin-top: -10px;
+            font-size: .9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="nav-brand">
+            <p style="font-size: 35px;">Meal Dash</p>
+            <img src="assets/icons8-leaf-48.png">
+        </div>
+        <div class="nav-info" style="font-size: 25px;">
+            <a href="/">Home</a>
+            <a href="/">Menu</a>
+            <a href="/">Contact us</a>
+        </div>
+        <div class="nav-signup">
+            <img src="assets/icons8-basket-30 (1).png" />
+            <button class="btn-signup">Sign up</button>
+        </div>
+    </div>
+
+    <div class="poster">
+        <img src="assets/top-view-circular-frame-with-delicious-food_23-2148308812.avif" style=" width: 100%; height: 100%; border-radius: 20px;"/>
+        <div class="poster-info">
+            <h2>Tired of Meal Prepping?</h2>
+            <p>Choose from a diverse menu featuring a delectable array of dishes crafted with the finest ingredients and culinary expertise. Combine taste, time, and health to save time while doing it.</p>
+            <button class="btn-signup">View Menu</button>
+        </div>
+    </div>
+
+    <div class="explore">
+        <h2>Explore our menu</h2>
+        <p>Choose from a diverse menu featuring a delectable array of dishes. Our mission is to satisfy your cravings and elevate your dining experience, one delicious meal at a time.</p>
+        <div class="explore-items" id="explore-items"></div>
+    </div>
+
+    <div class="dishes-container">
+        <h2 style="color:darkgreen">Top dishes near you</h2>
+        <div class="dishes" id="dishes"></div>
+    </div>
+
+    <script>
+        const imageSrc = [
+            "assets/70ff2ada-8d8f-4715-a41b-373a3137df19.jpg", 
+            "assets/OIP (5).jpg", 
+            "assets/b8e14a14af9434aa5ccc0376a47a5237.jpg", 
+            "assets/sandwich.jpg", 
+            "assets/aesthetic-food-pictures-2camcwptr2pxhqtn (1).jpg", 
+            "assets/15.jpg", 
+            "assets/istockphoto-175408115-170667a.jpg", 
+            "assets/6b405b2d2c567742996b56df14eeeef6.jpg"
+        ];
+        const name = ["Salad", "Rolls", "Deserts", "Sandwich", "Cake", "Pure Veg", "Pasta", "Noodles"];
+
+        const exploreItemsContainer = document.getElementById("explore-items");
+
+        let htmlData = "";
+        for (let i = 0; i < imageSrc.length; i++) {
+            htmlData += `
+                <div class="food-item" onclick="updateCategory(${i})">
+                    <img src="${imageSrc[i]}" alt="${name[i]}"/>
+                    <p>${name[i]}</p>
+                </div>
+            `;
+        }
+
+        exploreItemsContainer.innerHTML = htmlData;
+
+        function updateCategory(categoryIndex) {
+            switch(categoryIndex) {
+                case 0: updateSalad(); break;
+                case 1: updateRolls(); break;
+                case 2: updateDesserts(); break;
+                case 3: updateSandwich(); break;
+                case 4: updateCake(); break;
+                case 5: updateVeg(); break;
+                case 6: updatePasta(); break;
+                case 7: updateNoodles(); break;
+                default: break;
+            }
+        }
+
+        function updateSalad() {
+            const salad = [
+                {imgSrc: 'assets/70ff2ada-8d8f-4715-a41b-373a3137df19.jpg', name: 'Greek Salad', desc: 'Fresh and healthy', price: 120},
+                {imgSrc: 'assets/cucumber.jpg', name: 'Veg Salad', desc: 'Light and refreshing', price: 180},
+                {imgSrc: 'assets/salad2.jpg', name: 'Chicken Salad', desc: 'Fresh and refreshing', price: 180},
+                {imgSrc: 'assets/cloversalad.jpg', name: 'Clover Salad', desc: 'Light and refreshing', price: 180}
+                
+            ];
+            updateDishes(salad);
+        }
+
+        function updateRolls() {
+            const rolls = [
+                {imgSrc: 'assets/rolls.jpg', name: 'Veg Roll', desc: 'Delicious veggie rolls', price: 150},
+                {imgSrc: 'assets/roll2.jpg', name: 'Pizza Roll', desc: 'Delicious veggie rolls', price: 150},
+                {imgSrc: 'assets/roll3.jpg', name: 'California Roll', desc: 'Delicious veggie rolls', price: 150},
+                {imgSrc: 'assets/roll4.webp', name: 'Chicken Roll', desc: 'Delicious veggie rolls', price: 150}
+            ];
+            updateDishes(rolls);
+        }
+        function updateCake() {
+            const cake = [
+                {imgSrc: 'assets/c1.jpg', name: 'Paklava', desc: 'Delicious cakes', price: 150},
+                {imgSrc: 'assets/c2.jpg', name: 'Banana cake', desc: 'Delicious cakes', price: 150},
+                {imgSrc: 'assets/c3.jpg', name: 'Strawberry cake', desc: 'Delicious cakes', price: 150},
+                {imgSrc: 'assets/c4.jpg', name: 'Vanilla cake', desc: 'Delicious cakes', price: 150}
+            ];
+            updateDishes(cake);
+        }
+        function updateDesserts() {
+            const desserts = [
+                {imgSrc: 'assets/d1.jpg', name: 'Macaroon', desc: 'Delicious desserts', price: 150},
+                {imgSrc: 'assets/d2.jpg', name: 'Lava cake', desc: 'Delicious desserts', price: 150},
+                {imgSrc: 'assets/d3.jpg', name: 'Milkshake', desc: 'Delicious desserts', price: 150},
+                {imgSrc: 'assets/d4.jpg', name: 'Pancake', desc: 'Delicious desserts', price: 150}
+            ];
+            updateDishes(desserts);
+        }
+        function updateSandwich() {
+            const Sandwich = [
+                {imgSrc: 'assets/s1.jpg', name: 'Macaroon', desc: 'Delicious desserts', price: 150},
+                {imgSrc: 'assets/s2.jpg', name: 'Lava cake', desc: 'Delicious desserts', price: 150},
+                {imgSrc: 'assets/s3.jpg', name: 'Milkshake', desc: 'Delicious desserts', price: 150},
+                {imgSrc: 'assets/s4.jpg', name: 'Pancake', desc: 'Delicious desserts', price: 150}
+            ];
+            updateDishes(Sandwich);
+        }
+        function updateVeg() {
+            const Veg = [
+                {imgSrc: 'assets/v1.jpg', name: 'Macaroon', desc: 'Delicious desserts', price: 150},
+                {imgSrc: 'assets/v2.jpg', name: 'Lava cake', desc: 'Delicious desserts', price: 150},
+                {imgSrc: 'assets/v3.jpg', name: 'Milkshake', desc: 'Delicious desserts', price: 150},
+                {imgSrc: 'assets/IndianStreetFood_20190103000803.jpg', name: 'Pancake', desc: 'Delicious desserts', price: 150}
+            ];
+            updateDishes(Veg);
+        }
+        function updatePasta() {
+            const Pasta = [
+                {imgSrc: 'assets/p1.jpg', name: 'Macaroon', desc: 'Delicious desserts', price: 150},
+                {imgSrc: 'assets/p2.jpg', name: 'Lava cake', desc: 'Delicious desserts', price: 150},
+                {imgSrc: 'assets/p3.jpg', name: 'Milkshake', desc: 'Delicious desserts', price: 150},
+                {imgSrc: 'assets/p4.jpg', name: 'Pancake', desc: 'Delicious desserts', price: 150}
+            ];
+            updateDishes(Pasta);
+        }
+        function updateNoodles() {
+            const Noodles = [
+                {imgSrc: 'assets/n1.jpg', name: 'carbonara', desc: 'Delicious desserts', price: 150},
+                {imgSrc: 'assets/n2.jpg', name: 'lasagna', desc: 'Delicious desserts',price: 150},
+                {imgSrc: 'assets/n3.jpg', name: 'Chessy spicy noodles', desc: 'Delicious desserts', price: 150},
+                {imgSrc: 'assets/n4.jpg', name: 'Pesto', desc: 'Delicious desserts', price: 150}
+            ];
+            updateDishes(Noodles);
+        }
+
+        function updateDishes(dishes) {
+            let dishesData = '';
+            dishes.forEach(dish => {
+                dishesData += `
+                    <div class="dish">
+                        <img src="${dish.imgSrc}" class="dish-image" alt="${dish.name}" />
+                        <div class="dish-container">
+                            <div class="dish-info">
+                                <h4>${dish.name}</h4>
+                                <p class="dish-desc">${dish.desc}</p>
+                                <p class="dish-price">₹${dish.price}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            document.getElementById("dishes").innerHTML = dishesData;
+        }
+    </script>
+</body>
+</html>
