@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <style>
+        body{
+            margin:0px;
+            padding:0px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            margin:20px;
+            font-family: "Playfair Display", serif;
+        }
+        .container{
+            background-color: darkmagenta;
+            width:30%;
+            height: 600px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            border:2px solid darkblue;
+        }
+        .small-container{
+            background-color: beige;
+            width:70%;
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            align-items: center; 
+            border:2px solid darkblue;
+        }
+        .list-item{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+        .list-foot{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+        .list-foot>button{
+            background-color: lightpink;
+            border-radius: 20px;
+            font-family: "Playfair Display", serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="small-container">
+            <div class="list-header">
+                <input type="text" id="task-input"  placeholder="Please Write Something"/>
+                <button onclick="addNewTask()"><img src="assets/icons8-add-26.png" style="width:20px;height:22px;"></button>
+            </div>
+            <div class="list-body"></div>
+            <div class="list-foot">
+                <p id="tasks-pending">pending tasks: 0</p>
+                <button onclick="resetTask()">Clear All</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        const data = []
+        const task_input = document.getElementById('task-input')
+        const list_body = document.getElementsByClassName('list-body')[0]
+
+        function addNewTask() {
+            let input_data = task_input.value
+            const task = {
+                status : false,
+                message : input_data
+            }
+            data.push(task)
+            render()
+            console.log(data)
+        }
+
+        function updateCheckbox(i){
+            data[i].status = (data[i].status) ? false : true
+            render()
+        }
+
+        function deleteTask(i){
+            data.splice(i, 1)
+            render()
+        }
+
+        function resetTask() {
+            data.splice(0, data.length)
+            render()
+        }
+
+        function render() {
+            let htmlData = ''
+            let count = 0
+            for(let i = data.length-1; i >= 0; i--){
+                const task = data[i]
+                htmlData += 
+                `<div class="list-item">
+                    <input type="checkbox" onclick="updateCheckbox(${i})" ${task.status ? 'checked': ''}/>
+                    <p style="text-decoration: ${task.status ? 'line-through' : 'none'};" id="task-para-${i}">${task.message}</p>
+                    <button onclick="deleteTask(${i})">X</button>
+                </div>`
+                if(task.status == false){
+                    count++
+                }
+            }
+            list_body.innerHTML = htmlData
+            document.getElementById("tasks-pending").innerHTML = `pending tasks: ${count}`
+        }
+    </script>
+</body>
+</html>
