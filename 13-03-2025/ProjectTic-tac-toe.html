@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: linear-gradient(135deg,darkmagenta, #ffabec);
+        font-family: 'Comfortaa', sans-serif;
+    }
+
+    .container {
+        text-align: center;
+        color: #fff;
+        border-radius: 15px;
+        padding: 40px;
+        background-color: rgba(0, 0, 0, 0.5);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    h1 {
+        font-size: 3em;
+        margin-bottom: 20px;
+        font-weight: 700;
+        color: #ffdfdf;
+    }
+
+    table {
+        margin: 20px auto;
+        border: 3px solid #fff;
+        border-radius: 10px;
+    }
+
+    td {
+        width: 80px;
+        height: 80px;
+        text-align: center;
+        font-size: 2.5em;
+        color: #fff;
+        background-color: lightpink;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        border: 2px solid #fff;
+    }
+
+    td:hover {
+        background-color: lightpink;
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 1.2em;
+        border: none;
+        border-radius: 5px;
+        background-color: salmon;
+        color: white;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+        background-color: #018786;
+    }
+
+    .result {
+        font-size: 1.5em;
+        margin-top: 20px;
+        color: #ffdfdf;
+    }
+</style>
+<body>
+    <div class="container">
+        <h1>Tic-Tac-Toe</h1>
+        <table>
+            <tr>
+                <td onclick="play(this, 0)" class="cell"></td>
+                <td onclick="play(this, 1)" class="cell"></td>
+                <td onclick="play(this, 2)" class="cell"></td>
+            </tr>
+            <tr>
+                <td onclick="play(this, 3)" class="cell"></td>
+                <td onclick="play(this, 4)" class="cell"></td>
+                <td onclick="play(this, 5)" class="cell"></td>
+            </tr>
+            <tr>
+                <td onclick="play(this, 6)" class="cell"></td>
+                <td onclick="play(this, 7)" class="cell"></td>
+                <td onclick="play(this, 8)" class="cell"></td>
+            </tr>
+        </table>
+        <button onclick="reset()">Reset</button>
+        <div id="result" class="result"></div>
+    </div>
+
+<script>
+    let player = 'X';
+    const cells = document.getElementsByClassName('cell');
+    const resultDiv = document.getElementById('result');
+
+    function play(obj, i) {
+        if (obj.innerHTML === '') {
+            obj.innerHTML = player;
+            if (check(player, i)) {
+                resultDiv.innerHTML = `${player} wins!`;
+                setTimeout(reset, 2000);
+                return;
+            }
+            if (filled()) {
+                resultDiv.innerHTML = 'Draw!';
+                setTimeout(reset, 2000);
+            }
+            player = (player === 'X') ? 'O' : 'X';
+        }
+    }
+
+    function check(player, i) {
+        let cell_0 = cells[0].innerHTML;
+        let cell_1 = cells[1].innerHTML;
+        let cell_2 = cells[2].innerHTML;
+        let cell_3 = cells[3].innerHTML;
+        let cell_4 = cells[4].innerHTML;
+        let cell_5 = cells[5].innerHTML;
+        let cell_6 = cells[6].innerHTML;
+        let cell_7 = cells[7].innerHTML;
+        let cell_8 = cells[8].innerHTML;
+
+        const winningCombinations = [
+            [0, 1, 2], [3, 4, 5], [6, 7, 8],  
+            [0, 3, 6], [1, 4, 7], [2, 5, 8],  
+            [0, 4, 8], [2, 4, 6]              
+        ];
+
+        for (let combination of winningCombinations) {
+            if (cells[combination[0]].innerHTML === player &&
+                cells[combination[1]].innerHTML === player &&
+                cells[combination[2]].innerHTML === player) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function filled() {
+        for (let i = 0; i <= 8; i++) {
+            if (cells[i].innerHTML === '') {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    function reset() {
+        for (let i = 0; i <= 8; i++) {
+            cells[i].innerHTML = '';
+        }
+        resultDiv.innerHTML = '';
+    }
+</script>
+</body>
+</html>

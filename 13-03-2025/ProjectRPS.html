@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock-Paper-Scissors</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: lightcyan;
+            
+        }
+        .big-container {
+            background-color: #98d1d7;
+            width: 60%;
+            height: 550px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            border: 2px solid darkblue;
+        }
+        .top-bar h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .button-bar button {
+            margin: 0 10px;
+            cursor: pointer;
+            border: none;
+            background-color: transparent;
+        }
+        .button-bar button img {
+            width: 80px;
+            height: 80px;
+            border-radius: 60px;
+            border: 2px solid darkblue;
+        }
+        .button-bar button:hover {
+            background-color: #62c2c8;
+            transform: scale(1.1);
+        }
+        .game-result {
+            font-size: 24px;
+            font-weight: bold;
+            color: darkblue;
+            margin: 20px 0;
+        }
+        .table-bar table {
+            width: 60%;
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+        .table-bar td {
+            padding: 10px;
+            font-size: 20px;
+            text-align: center;
+            border: 2px solid #005f73;
+        }
+        .count {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-top: 20px;
+        }
+        .reset-button {
+            width: 120px;
+            height: 40px;
+            font-size: 18px;
+            background-color: #f4a261;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .reset-button:hover {
+            background-color: #e76f51;
+        }
+    </style>
+</head>
+<body>
+
+<div class="big-container">
+    <div class="top-bar"><h1>Rock Paper Scissors!</h1></div>
+    
+    <div class="button-bar">
+        <button onclick="play('Rock')"><img src="assets/rock.jpg" alt="Rock"></button>
+        <button onclick="play('Paper')"><img src="assets/paper.jpg" alt="Paper"></button>
+        <button onclick="play('Scissors')"><img src="assets/scissor.jpg" alt="Scissors"></button>
+    </div>
+    
+    <p class="game-result" id="game-result">-</p>
+    
+    <div class="table-bar">
+        <table>
+            <tr>
+                <td>You</td>
+                <td>Computer</td>
+            </tr>
+            <tr>
+                <td id="user-choice">-</td>
+                <td id="computer-choice">-</td>
+            </tr>
+        </table>
+    </div>
+    
+    <div class="count">
+        Wins: <span id="wins-count">0</span> |
+        Losses: <span id="losses-count">0</span> |
+        Ties: <span id="ties-count">0</span>
+    </div>
+    
+    <button class="reset-button" onclick="reset()">Reset</button>
+</div>
+
+<script>
+    const user_choice = document.getElementById('user-choice');
+    const computer_choice = document.getElementById('computer-choice');
+    const game_result = document.getElementById('game-result');
+    const winsCount = document.getElementById('wins-count');
+    const lossesCount = document.getElementById('losses-count');
+    const tiesCount = document.getElementById('ties-count');
+    let wins = 0, losses = 0, ties = 0, matches = 0;
+
+    function play(user_cho) {
+        matches++;
+        let comp_cho = getRandom();
+        user_choice.innerHTML = user_cho;
+        computer_choice.innerHTML = comp_cho;
+
+        if (user_cho === 'Rock') {
+            if (comp_cho === 'Scissors') {
+                game_result.innerHTML = 'You win!';
+                wins++;
+            } else if (comp_cho === 'Paper') {
+                game_result.innerHTML = 'You lost!';
+                losses++;
+            } else {
+                game_result.innerHTML = 'It\'s a tie!';
+                ties++;
+            }
+        } else if (user_cho === 'Paper') {
+            if (comp_cho === 'Rock') {
+                game_result.innerHTML = 'You win!';
+                wins++;
+            } else if (comp_cho === 'Scissors') {
+                game_result.innerHTML = 'You lost!';
+                losses++;
+            } else {
+                game_result.innerHTML = 'It\'s a tie!';
+                ties++;
+            }
+        } else if (user_cho === 'Scissors') {
+            if (comp_cho === 'Paper') {
+                game_result.innerHTML = 'You win!';
+                wins++;
+            } else if (comp_cho === 'Rock') {
+                game_result.innerHTML = 'You lost!';
+                losses++;
+            } else {
+                game_result.innerHTML = 'It\'s a tie!';
+                ties++;
+            }
+        }
+
+        winsCount.innerHTML = wins;
+        lossesCount.innerHTML = losses;
+        tiesCount.innerHTML = ties;
+
+        if (matches === 5) {
+            if (wins > losses) {
+                alert('You won the game!');
+            } else if (losses > wins) {
+                alert('You lost the game!');
+            } else {
+                alert('The game is a tie!');
+            }
+            reset();
+        }
+    }
+
+    function reset() {
+        wins = 0;
+        losses = 0;
+        ties = 0;
+        matches = 0;
+
+        winsCount.innerHTML = wins;
+        lossesCount.innerHTML = losses;
+        tiesCount.innerHTML = ties;
+
+        game_result.innerHTML = '-';
+        user_choice.innerHTML = '-';
+        computer_choice.innerHTML = '-';
+    }
+
+    function getRandom() {
+        const choices = ['Rock', 'Paper', 'Scissors'];
+        return choices[Math.floor(Math.random() * 3)];
+    }
+</script>
+
+</body>
+</html>
