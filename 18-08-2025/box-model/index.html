@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Box-Model Project</title>
+    <style>
+        body {
+            background-color: aliceblue;
+            font-size: medium;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center; 
+        }
+        .container {
+            width: 350px;
+            height: 350px;
+            background-color: red;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            margin: 20px;
+        }
+        .container-2 {
+            width: 320px;
+            height: 320px;
+            background-color: rgb(224, 235, 65);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+            margin: 15px;
+        }
+        .container-3 {
+            width: 250px;
+            height: 250px;
+            background-color: cornflowerblue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            margin: 10px;
+            text-align: center;
+            color: white;
+            
+        }
+        .slider{
+            background: gainsboro;
+            width:800px;
+            padding:20px;
+            margin:auto;
+
+        }
+        .margin{
+            margin: 10px 0;
+             display: flex;
+            justify-content: left;
+            
+            
+        }
+        .sq{
+            width: 18px;
+            height: 18px;
+            border: 2px dashed black;
+            background-color: white;
+        }
+        .sq2{
+            width: 18px;
+            height: 18px;
+            background-color: red;
+        }
+        .sq0{
+            width: 18px;
+            height: 18px;
+            background-color: yellow;
+        }
+        .sq1{
+            width: 18px;
+            height: 18px;
+            background-color: cornflowerblue;
+        }
+        .letter{
+            width:800px;
+            padding:20px;
+            background-color: gainsboro;
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+        }
+
+    </style>
+</head>
+<body>
+    <h1 >CSS Box Model Demonstration</h1>
+    
+    <div class="container">
+        <div class="container-2">
+            <div class="container-3" id="contentBox">
+                <p>Content</p>
+            </div>
+        </div>
+    </div>
+    <div class="slider">
+        <div class="margin">
+       <label><strong>Margin:</strong></label>
+       <input type="range" id="marginRange" min="0" max="50" value="20">
+       <span id="marginValue">20px</span>
+       </div>
+
+       <div class="border">
+       <label><strong>Border:</strong></label>
+       <input type="range" id="borderRange" min="0" max="5" value="5">
+       <span id="borderValue">5px</span>
+       </div>
+
+       <div class="padding">
+       <label><strong>Padding:</strong></label>
+       <input type="range" id="paddingRange" min="0" max="42" value="42">
+       <span id="paddingValue">42px</span>
+       </div>
+
+    </div>
+    
+        
+        <div class="letter">
+            <h1 style="text-align: center";>Box Model Components</h1>
+
+            <div class="sq"></div>
+            <p><strong>Margin-</strong>Space outside the border(transparent).</p>
+             
+            <div class="sq2"></div>
+            <p><strong>Border-</strong>Surrounds the padding and content.</p>
+
+            <div class="sq0"></div>
+            <p><strong>Padding-</strong>Space between border and content.</p>
+        
+        
+            <div class="sq1"></div>
+            <p><strong>Content-</strong>Actual content of the box.</p>
+     
+    </div>
+    <script>
+    
+
+document.addEventListener('DOMContentLoaded', function() {
+    const marginSlider = document.getElementById('marginRange');
+    const borderSlider = document.getElementById('borderRange');
+    const paddingSlider = document.getElementById('paddingRange');
+
+    const container1 = document.querySelector('.container');
+    const container2 = document.querySelector('.container-2');
+    const container3 = document.querySelector('.container-3');
+
+    const marginValue = document.getElementById('marginValue');
+    const borderValue = document.getElementById('borderValue');
+    const paddingValue = document.getElementById('paddingValue');
+
+    
+    marginSlider.addEventListener('input', function() {
+        const value = 300 + parseInt(this.value); 
+        container1.style.width = value + 'px';
+        container1.style.height = value + 'px';
+        marginValue.textContent = this.value + 'px';
+    });
+
+   
+    borderSlider.addEventListener('input', function() {
+        const value = 250 + parseInt(this.value) * 10;
+        container2.style.width = value + 'px';
+        container2.style.height = value + 'px';
+        borderValue.textContent = this.value + 'px';
+    });
+
+    
+    paddingSlider.addEventListener('input', function() {
+        const value = 200 + parseInt(this.value);
+        container3.style.width = value + 'px';
+        container3.style.height = value + 'px';
+        paddingValue.textContent = this.value + 'px';
+    });
+});
+
+
+</script>    
+</body>
+</html>
