@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Form</title>
+        <style>
+            body{
+                background-color: darkcyan;
+                padding: 20px;
+            }
+            .form-fill{
+                background-color:lightgrey ;
+                display: flex;
+                flex-direction: column;
+                justify-items: center;
+                width: 400px;
+                height: 450px;
+                padding: 12px;
+                margin-left:500px;
+                margin-top: 150px;
+                border: 2px solid darkgreen;
+            }
+            .item{
+                padding:10px;
+            }
+            .items{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                margin-top: 20px;
+                margin-left: 150px;
+
+            }
+            .table{
+                background-color: lightgrey;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: auto;
+                margin: 100px;
+            }
+            th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+            margin: 20px;
+        }
+        th {
+            background-color: darkcyan;
+            color: white;
+        }
+        </style>
+    </head>
+    <body>
+        <div class="form-fill">
+            <h1 style="text-align: center";>EMPLOYEE ADDITION FORM</h1>
+            <form id="addEmployeeById">
+                <div class="item">
+                <label>Name:</label>
+                <input type="text" id="fname" name="fname"><br>
+                </div>
+                <div class="item">
+                 <label>Age:</label>
+                <input type="number" id="age" name="age"><br>
+                </div>
+                <div class="item">
+                 <label>DOB:</label>
+                <input type="date" id="dob" name="dob"><br>
+                </div>
+                <div class="item">
+                 <label>Position:</label>
+                <input type="text" id="position" name="position"><br>
+                </div>
+                <div class="item">
+                 <label>Gender</label>
+                 <input type="radio" id="female" name="gender" value="female">
+                 <label for="female">Female</label>
+                 <input type="radio" id="male" name="gender" value="male">
+                 <label for="male">Male</label>
+                 </div>
+                 <div class="items">
+                    <button onclick="addEmp">Add Employee</button>
+                 </div>
+                </form>
+        </div>
+        <div class="table">
+        <table id="employeeTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>DOB</th>
+                <th>Position</th>
+                <th>Gender</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+        </div>
+    </table>
+    <script>
+        document.getElementById("addEmployeeById").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+           
+            let name = document.getElementById("fname").value;
+            let age = document.getElementById("age").value;
+            let dob = document.getElementById("dob").value;
+            let position = document.getElementById("position").value;
+            let gender = document.querySelector('input[name="gender"]:checked')?.value || "Not specified";
+
+           
+            let table = document.getElementById("employeeTable").querySelector("tbody");
+            let row = document.createElement("tr");
+
+            row.innerHTML = `
+                <td>${name}</td>
+                <td>${age}</td>
+                <td>${dob}</td>
+                <td>${position}</td>
+                <td>${gender}</td>
+            `;
+
+            
+            table.appendChild(row);
+
+           
+            this.reset();
+        });
+    </script>
+
+    </body>
+</html>
