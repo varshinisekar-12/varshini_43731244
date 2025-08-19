@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Varshini Sekar | Portfolio</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: #ffffff;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* Header */
+    header {
+      text-align: center;
+      padding: 60px 20px 100px;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      color: white;
+      position: relative;
+    }
+
+    header h1 {
+      font-size: 42px;
+      font-family: 'Poppins', sans-serif;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 18px;
+      margin: 5px 0;
+    }
+
+    .circle-img {
+      position: absolute;
+      bottom: -60px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid white;
+      box-shadow: 0px 6px 18px rgba(0,0,0,0.2);
+    }
+
+    /* Section Styling */
+    section {
+      width: 85%;
+      max-width: 1000px;
+      margin: 100px auto 50px;
+    }
+
+    section h2 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 28px;
+      margin-bottom: 20px;
+      border-bottom: 3px solid #2a5298;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+
+    .about, .skills, .education, .projects, .achievements {
+      background: #f9f9f9;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0px 4px 12px rgba(0,0,0,0.08);
+    }
+
+    
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 15px;
+    }
+
+    .card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 3px 10px rgba(0,0,0,0.05);
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0px 6px 16px rgba(0,0,0,0.1);
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 50px;
+      padding: 30px 20px;
+      background: #1e1e1e;
+      text-align: center;
+      color: white;
+    }
+
+    .social-icons a {
+      margin: 0 15px;
+      font-size: 24px;
+      color: white;
+      transition: color 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: #2a5298;
+    }
+
+    footer p {
+      font-size: 14px;
+      margin-top: 15px;
+      opacity: 0.8;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding-bottom: 120px;
+      }
+      .circle-img {
+        width: 120px;
+        height: 120px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+ 
+  <header>
+    <h1>Varshini Sekar</h1>
+    <p>CSE with Specialisation in AI | Sathyabama Institute of Science and Technology</p>
+    <p>she/her</p>
+    <img src="WhatsApp Image 2025-03-05 at 3.09.24 PM.jpeg" alt="Profile Image" class="circle-img">
+  </header>
+
+  
+  <section>
+    <div class="about">
+      <h2>About Me</h2>
+      <p>
+        I am proficient in Java, C, and Python, with a strong foundation in problem-solving and software development. 
+        Currently, I am expanding my skill set through web development, aiming to build dynamic and user-friendly applications. 
+        I am deeply passionate about research and thrive on solving complex problems with practical, real-world solutions. 
+        My goal is to leverage technology to create meaningful impact as a software engineer.
+      </p>
+    </div>
+  </section>
+
+  
+  <section>
+    <div class="skills">
+      <h2>Skills</h2>
+      <div class="grid">
+        <div class="card">Programming: Java, Python, C</div>
+        <div class="card">Advanced Java & Data Structures</div>
+        <div class="card">Frontend: HTML, CSS, JavaScript</div>
+        <div class="card">Backend Integration</div>
+        <div class="card">Research & Problem Solving</div>
+      </div>
+    </div>
+  </section>
+
+  
+  <section>
+    <div class="education">
+      <h2>Education</h2>
+      <p><strong>10th Grade:</strong> 97%</p>
+      <p><strong>12th Grade:</strong> 92%</p>
+      <p><strong>B.E. CSE (AI Specialisation)</strong><br>Sathyabama Institute of Science and Technology</p>
+    </div>
+  </section>
+
+  
+  <section>
+    <div class="projects">
+      <h2>Achievements</h2>
+      <ul>
+        <li>Design Lead of Poetry Club</li>
+        <li>Built a project addressing irregular income challenges for rural farmers</li>
+      </ul>
+    </div>
+  </section>
+
+ 
+  <section>
+    <div class="achievements">
+      <h2>Hobbies</h2>
+      <p>Reading Books | Writing Essays | Debate | Singing</p>
+    </div>
+  </section>
+
+  
+  <footer>
+    <div class="social-icons">
+      <a href="https://www.linkedin.com/in/varshimasut/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+      <a href="mailto:youremail@example.com"><i class="fa-solid fa-envelope"></i></a>
+    </div>
+    <p>© 2025 Varshini Sekar | Portfolio</p>
+  </footer>
+
+</body>
+</html>
