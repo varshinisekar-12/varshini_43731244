@@ -1,0 +1,46 @@
+CREATE DATABASE IF NOT EXISTS mydatabase;
+USE mydatabase;
+CREATE TABLE employees
+(
+name VARCHAR(255) ,
+id INT PRIMARY KEY NOT NULL,
+email VARCHAR(255)
+);
+INSERT INTO employees(name,id,email) VALUES ('varshini',101,'varsh@gmail.com'),('vish', 102,'vish@gmail.com'),('shaff', 103,'shaff@gmail.com');
+SELECT * FROM employees;
+UPDATE employees 
+SET email = 'shaffny@gmail.com'
+WHERE id = 103;
+SELECT * FROM employees;
+ALTER TABLE employees ADD COLUMN salary DECIMAL(10,2);
+SELECT * FROM employees;
+ALTER TABLE employees ADD(
+country varchar(40) DEFAULT 'India');
+UPDATE employees
+SET salary = 12000
+WHERE id=103;
+insert into employees values ('Kumar',104,'kumarraj@gmail.com',1200,'Sri Lanka');
+ALTER TABLE employees 
+CHANGE country location VARCHAR(50);
+update employees set location='India', salary=2000, email='kumar@gmail.com' where id=104;
+update employees set salary = salary +1000;
+drop database mydatabase;
+truncate table worker;
+create database student;
+use student;
+CREATE TABLE students
+(
+name VARCHAR(255) ,
+id INT PRIMARY KEY NOT NULL,
+email VARCHAR(255)
+);
+start transaction;
+insert into students values('varsha',1001, 'abc');
+savepoint A1343;
+insert into students values('radha',1003, 'GHI');
+savepoint A1344;
+select*from students;
+DELETE FROM students;
+ALTER TABLE students 
+DROP COLUMN email;
+
