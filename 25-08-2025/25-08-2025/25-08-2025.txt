@@ -1,0 +1,42 @@
+USE ORG123;
+CREATE TABLE Depart (
+    department_id INT PRIMARY KEY,
+    department_name VARCHAR(100) NOT NULL
+);
+CREATE TABLE Employ (
+    employee_id INT PRIMARY KEY,
+    employee_name VARCHAR(100) NOT NULL,
+    department_id INT,
+    CONSTRAINT fk_department
+        FOREIGN KEY (department_id)
+        REFERENCES Depart(department_id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);
+INSERT INTO Depart (department_id, department_name)
+VALUES 
+(1011, 'Human Resources'),
+(1012, 'Finance'),
+(1013,'IT');
+
+INSERT INTO Employ (employee_id, employee_name, department_id)
+VALUES
+(101, 'Alice', 1011),
+(102, 'Bob', 1012),
+(103, 'Charlie', 1012),
+(104, 'David', 1013),
+(105, 'Eva', 1013);
+
+select*from depart;
+select *from employ;
+
+#delete and update cascade
+DELETE FROM Depart WHERE department_id = 1012;
+UPDATE Depart SET department_id = 1014 WHERE department_id = 1013;
+
+INSERT INTO Depart VALUES (1016, 'Arts');
+INSERT INTO Employ VALUES
+(102, 'Alisha', 1014),(103, 'Bob', 1014);
+select employee_id as Employee_ID from employ;
+desc employ;
+
