@@ -1,0 +1,124 @@
+use ORG123;
+DESC WORKER;
+#AND OPERATOR
+SELECT*FROM WORKER WHERE DEPARTMENT='ACCOUNT' AND SALARY>=30000;
+SELECT*FROM WORKER WHERE DEPARTMENT='HR' AND JOINING_DATE >='2014-01-12';
+
+#OR OPERATOR
+SELECT*FROM WORKER WHERE AGE<=25 OR SALARY>=300000;
+SELECT*FROM WORKER WHERE DEPARTMENT='ADMIN' OR SALARY>=200000;
+
+#NOT OPERATOR
+SELECT*FROM WORKER WHERE NOT DEPARTMENT='ACCOUNT';
+SELECT * FROM Worker WHERE SALARY!= 500000;
+
+#EQUAL OPERATOR
+SELECT*FROM WORKER WHERE DEPARTMENT='ACCOUNT' OR JOINING_DATE <='2014-01-12';
+SELECT*FROM WORKER WHERE FIRST_NAME='VIPUL' OR LAST_NAME='KUMAR';
+
+#GREATER THAN
+SELECT*FROM WORKER WHERE  JOINING_DATE >'2014-01-12';
+SELECT*FROM WORKER WHERE SALARY>90000 AND AGE>25;
+
+#LESS THAN
+SELECT*FROM WORKER WHERE JOINING_DATE <'2014-05-12';
+SELECT * FROM Worker WHERE SALARY < 100000 AND AGE < 28;
+SELECT * FROM Worker WHERE SALARY > (SELECT AVG(SALARY) FROM Worker);
+
+#GRAETER THAN AND EQUAL
+SELECT * FROM Worker WHERE AGE >= 30 OR SALARY >= 500000;
+SELECT * FROM Worker WHERE SALARY>=200000 OR JOINING_DATE >= '2014-06-11';
+
+#LESS THAN AND EQUAL
+SELECT * FROM Worker WHERE SALARY <= 90000 AND DEPARTMENT = 'Account';
+SELECT * FROM Worker WHERE AGE BETWEEN 25 AND 30 AND SALARY<= 80000 ;
+
+#in
+SELECT * FROM Worker WHERE DEPARTMENT IN (
+    SELECT DEPARTMENT FROM Worker GROUP BY DEPARTMENT HAVING COUNT(*) > 2
+);
+SELECT* FROM WORKER WHERE WORKER_ID IN(1,3,5,7) AND SALARY>=100000;
+SELECT * FROM Worker WHERE DEPARTMENT IS NOT NULL AND AGE >= 28;
+
+#not in
+select*from worker 
+where salary between 100000 and 200000
+and department not in ('hr');
+
+
+#questions given by sir
+select*from worker 
+where salary between 70000 and 300000
+and department not in ('hr') or ('admin');
+
+select*from worker 
+where salary >= 200000
+and first_name like 'v%';
+
+select*from worker where department not in ('admin') and salary<100000;
+#min and max
+select min(salary)
+ as lowetsSalaryPerson 
+ from worker;
+ 
+select count(worker_id) 
+as lowetsSalaryPerson 
+from worker;
+
+select avg(salary)
+as avgSalary
+from worker;
+
+select max(salary) as
+ highestSalaryPerson 
+ from worker;
+ 
+ select sum(salary) as totalSalary from worker;
+ 
+ SELECT * 
+FROM worker
+WHERE salary = (SELECT MIN(salary) FROM worker)
+  AND (SELECT MIN(salary) FROM worker) >= 10007;
+
+select avg(salary)
+ as averageSalary
+ from worker 
+ where department='admin';
+ 
+ select sum(salary)
+ as totalSalary
+ from worker 
+ where department 
+ in ('hr','admin') ;
+ 
+ select count(worker_id) 
+ as TotalPeople 
+ from worker 
+ where first_name like 'v%';
+
+select sum(salary) as totalSalary
+from worker
+where salary between 50000 and 200000;
+
+#union
+select first_name from worker
+union
+select last_name from worker;
+
+# distinct
+select distinct(salary) from worker;
+
+#union all
+select first_name from worker
+union all
+select last_name from worker;
+
+#sql case
+select first_name, salary,
+CASE 
+when salary >300000 then 'rich'
+when salary >=100000 and salary<=300000 then 'middle class'
+else 'poor'
+end
+as statusBasedOnSalary
+from worker;
