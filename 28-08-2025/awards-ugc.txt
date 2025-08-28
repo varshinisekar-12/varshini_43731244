@@ -1,0 +1,62 @@
+create table award_winners(
+id int,
+name varchar(25),
+award_name varchar(30));
+
+insert into award_winners values(001,'Karthick','Volleyball winners'),(002,'Gopi','Basketball Runners'),(003,'Adib','Oscar winners'),
+(004,'Harij','English SpellBee 2nd Runner-up'),(005,'Loki','Volleyball winners'),(006,'Sakthi','Badminton Nationals runners'),
+(007,'Iqhlas','Debug winners'),(008,'AK','Basketball runners'),(009,'Kamal','Hackathon runners'),
+(010,'Barath','Hackathon winners');
+
+select * from award_winners;
+
+create table students(
+id int,
+name varchar(25));
+
+insert into students values(005,'Loki'),(1001,'Srihari'),(1003,'Dinesh'),(001,'Karthick'),(1005,'Tharun'),
+(1006,'Vamsi'),(1007,'Monish'),(1008,'Rohith'),(1009,'Alwyn'),(1010,'Akash');
+
+select * from students;
+
+select * from students 
+where id=(select id from award_winners where id=5);
+
+select * from students 
+where id=(select id from award_winners where name="karthick");
+
+select * from award_winners
+where id=(select id from students where id=1);
+
+select * from award_winners
+where id=(select id from students where name="Loki");
+
+CREATE TABLE student1 (
+    student_id INT PRIMARY KEY,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    department VARCHAR(50),
+    enrollment_date DATE
+);
+INSERT INTO student1 (student_id, first_name, last_name, department, enrollment_date) VALUES
+(1, 'Varshini', 'Sekar', 'CSE', '2022-08-01'),
+(2, 'Aditya', 'Kumar', 'ECE', '2021-07-15'),
+(3, 'Priya', 'Sharma', 'ME', '2023-01-10'),
+(4, 'Rohan', 'Patel', 'CSE', '2022-09-05'),
+(5, 'Sneha', 'Iyer', 'EEE', '2021-06-20');
+
+  CREATE TABLE student_awards1 (
+    award_id INT PRIMARY KEY,
+    student_id INT NOT NULL,
+    award_name VARCHAR(100) NOT NULL,
+    award_description TEXT,
+    award_date DATE,
+    FOREIGN KEY (student_id) REFERENCES student1(student_id)
+);
+
+INSERT INTO student_awards1 (award_id, student_id, award_name, award_description, award_date) VALUES
+(1, 1, 'Best Project', 'Awarded for outstanding final year project', '2024-05-20'),
+(2, 2, 'Coding Champion', 'Won first place in college coding competition', '2023-12-15'),
+(3, 1, 'Leadership Award', 'Recognized for leading student club activities', '2023-11-10'),
+(4, 4, 'Research Excellence', 'For publishing research paper in journal', '2024-03-05'),
+(5, 5, 'Sports Star', 'Excelled in college athletics meet', '2023-09-25');
