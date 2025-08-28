@@ -1,0 +1,54 @@
+use ORG123;
+DESC WORKER;
+#order by
+select * from worker
+order by salary asc;
+select first_name , salary
+from worker 
+where salary  order by salary asc;
+
+#group by
+select department,count(department) 
+from worker 
+group by department 
+order by department asc;
+select department, sum(salary) 
+from worker 
+group by department
+order by department asc;
+
+select sum(salary) from worker;
+
+select*from worker;
+select first_name, salary from worker;
+select first_name  from worker where department ='hr';
+select distinct department from worker;
+select first_name from worker order by salary asc;
+select count(*) from worker;
+
+select avg(salary) , department from worker group by department;
+select department, count(*) from worker group by department having count(*)>5;
+select w.first_name , d.department_name from worker w join department d on w.department_id=d.department_id;
+select first_name , salary from worker where salary >(select avg(salary)from worker);
+select count(*)as total from worker where department not in ('hr','admin');
+select*from worker;
+select max(salary), department from worker group by department ;
+
+#offszet and fetch and limit-offset
+SELECT * 
+FROM worker
+ORDER BY worker_id DESC
+OFFSET 5 ROWS FETCH NEXT 10 ROWS ONLY;
+
+
+SELECT * 
+FROM worker
+ORDER BY worker_id
+LIMIT 10 OFFSET 5;
+
+#row_number
+SELECT * FROM (
+    SELECT *, ROW_NUMBER() OVER (ORDER BY WORKER_ID) AS rn
+    FROM Worker
+) AS temp
+WHERE rn > 5;  // Skip first 5 rows
