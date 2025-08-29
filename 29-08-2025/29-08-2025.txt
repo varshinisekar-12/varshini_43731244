@@ -1,0 +1,54 @@
+use org123;
+CREATE TABLE students (
+    student_id INT PRIMARY KEY,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    department VARCHAR(50)
+);
+CREATE TABLE RESULT(
+result_id INT PRIMARY KEY,
+    student_id INT,
+    subject VARCHAR(50),
+    marks INT,
+    FOREIGN KEY (student_id) REFERENCES students(student_id)
+);
+INSERT INTO students (student_id, first_name, last_name, department) VALUES
+(1, 'Varshini', 'Sekar', 'CSE'),
+(2, 'Aditya', 'Kumar', 'ECE'),
+(3, 'Priya', 'Sharma', 'ME'),
+(4, 'Rohan', 'Patel', 'CSE');
+
+INSERT INTO result (result_id, student_id, subject, marks) VALUES
+(101, 1, 'Math', 90),
+(102, 2, 'Physics', 85),
+(103, 4, 'Math', 75),
+(104, 3, 'Physics', 88); 
+
+#inner join
+SELECT s.student_id, s.first_name, s.last_name, r.subject, r.marks
+FROM students s
+INNER JOIN result r ON s.student_id = r.student_id;
+
+#right join
+SELECT s.student_id, s.first_name, s.last_name, r.subject, r.marks
+FROM students s
+RIGHT JOIN result r ON s.student_id = r.student_id;
+
+#left join
+SELECT s.student_id, s.first_name, s.last_name, r.subject, r.marks
+FROM students s
+LEFT JOIN result r ON s.student_id = r.student_id;
+
+#full outer join
+select s.student_id, s.first_name, s.last_name, r.subject, r.marks 
+from students s left join result r 
+on s.student_id = r.student_id
+union
+select s.student_id, s.first_name, s.last_name, r.subject, r.marks 
+from students s right join result r 
+on s.student_id = r.student_id;
+
+#cross join
+SELECT s.student_id, s.first_name, r.subject, r.marks
+FROM students s
+CROSS JOIN result r;
