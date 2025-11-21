@@ -1,0 +1,182 @@
+package aiml;
+
+public class override {
+
+    public static void main(String[] args) {
+
+        System.out.println("ABSTRACT + INTERFACE ");
+        Shape shape = new Circle(5);
+        shape.draw();
+        System.out.println("Area: " + shape.area());
+
+        System.out.println("INHERITANCE + OVERRIDING");
+        Parent p = new Child();
+        p.show();
+
+        System.out.println("METHOD OVERLOADING");
+        Calculator calc = new Calculator();
+        System.out.println("Add (int): " + calc.add(10, 20));
+        System.out.println("Add (double): " + calc.add(3.5, 6.5));
+
+        System.out.println("ENCAPSULATION");
+        Person person = new Person("Varshini", 20);
+        person.display();
+
+        Person pEncap = new Person();
+        pEncap.setName("Rahul");
+        pEncap.setAge(22);
+        pEncap.display();
+
+        System.out.println("EXCEPTION HANDLING");
+        ExceptionDemo.handleAllExceptions();
+
+        System.out.println("throw & throws");
+        try {
+            ExceptionDemo.mustBePositive(-10);
+        } catch (Exception e) {
+            System.out.println("Caught from throw: " + e.getMessage());
+        }
+    }
+}
+
+interface Drawable {
+    void draw();
+}
+
+abstract class Shape implements Drawable {
+    abstract double area();
+
+    @Override
+    public void draw() {
+        System.out.println("Drawing Shape...");
+    }
+}
+
+class Circle extends Shape {
+
+    private double radius;
+
+    Circle(double radius) {
+        this.radius = radius;
+    }
+
+    @Override
+    double area() {
+        return Math.PI * radius * radius;
+    }
+
+    @Override
+    public void draw() {
+        System.out.println("Drawing Circle with radius " + radius);
+    }
+}
+
+class Parent {
+    void show() {
+        System.out.println("Parent class show()");
+    }
+}
+
+class Child extends Parent {
+    @Override
+    void show() {
+        System.out.println("Child class show() → Overridden method");
+    }
+}
+
+class Calculator {
+    int add(int a, int b) { return a + b; }
+    double add(double a, double b) { return a + b; }
+}
+
+class Person {
+    private String name;
+    private int age;
+
+    Person() { this("Unknown", 0); }
+    Person(String name, int age) { this.name = name; this.age = age; }
+
+    public String getName() { return this.name; }
+    public int getAge() { return this.age; }
+
+    public void setName(String name) { this.name = name; }
+
+    public void setAge(int age) {
+        if (age >= 0) this.age = age;
+    }
+
+    void display() {
+        System.out.println("Name: " + this.name);
+        System.out.println("Age: " + this.age);
+    }
+}
+
+class ExceptionDemo {
+
+    static void handleAllExceptions() {
+
+        try {
+            System.out.println("1. Arithmetic Exception");
+            int x = 10 / 0;  
+
+        } catch (ArithmeticException e) {
+            System.out.println("Caught: " + e);
+
+        } finally {
+            System.out.println("Arithmetic finally executed.");
+        }
+
+        try {
+            System.out.println("\n2. Array Index Out of Bounds");
+            int arr[] = new int[2];
+            int v = arr[5];  
+
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Caught: " + e);
+
+        } finally {
+            System.out.println("Array finally executed.");
+        }
+
+        try {
+            System.out.println("\n3. Number Format Exception");
+            int n = Integer.parseInt("abc"); 
+
+        } catch (NumberFormatException e) {
+            System.out.println("Caught: " + e);
+
+        } finally {
+            System.out.println("NumberFormat finally executed.");
+        }
+
+        try {
+            System.out.println("\n4. Null Pointer Exception");
+            String s = null;
+            System.out.println(s.length()); 
+
+        } catch (NullPointerException e) {
+            System.out.println("Caught: " + e);
+
+        } finally {
+            System.out.println("NullPointer finally executed.");
+        }
+
+        try {
+            System.out.println("\n5. Input Mismatch Exception (manually thrown)");
+            throw new java.util.InputMismatchException();
+
+        } catch (java.util.InputMismatchException e) {
+            System.out.println("Caught: " + e);
+
+        } finally {
+            System.out.println("InputMismatch finally executed.");
+        }
+    }
+
+    static void mustBePositive(int num) throws Exception {
+        if (num < 0) {
+            throw new Exception("Number must be positive!");
+        }
+        System.out.println("Valid number: " + num);
+    }
+}
