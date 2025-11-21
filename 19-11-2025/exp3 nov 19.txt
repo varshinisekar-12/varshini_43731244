@@ -1,0 +1,60 @@
+package aiml;
+
+public class Bike {
+
+	public static void main(String[] args) {
+
+		class SingleFather {
+		    void bike() {
+		        System.out.println("Single Inheritance → Father’s Bike: Splendor");
+		    }
+		}
+		class SingleSon extends SingleFather {
+		    void show() {
+		        bike();
+		    }
+		}
+		class GrandFather {
+		    void oldBike() {
+		        System.out.println("GrandFather's Bike: Royal Enfield 1983");
+		    }
+		}
+
+		class Father extends GrandFather {
+		    void fatherBike() {
+		        System.out.println("Father's Bike: Royal Enfield 2002");
+		    }
+		}
+
+		class Son1 extends Father {
+		    void bike() {
+		        System.out.println("Son1 Bike: KTM 390");
+		    }
+		}
+		class Son2 extends Father {
+		    void bike() {
+		        System.out.println("Son2 Bike: RC KTM 390");
+		    }
+		}
+public class AllInheritanceDemo {
+		    public static void main(String[] args) {
+
+		        System.out.println("Single Inheritance");
+		        SingleSon ss = new SingleSon();
+		        ss.show();
+
+		        System.out.println(" Multilevel Inheritance");
+		        Son1 s1 = new Son1();
+		        s1.oldBike();    
+		        s1.fatherBike();
+		        s1.bike();       
+
+		        System.out.println("Hierarchical Inheritance");
+		        Son2 s2 = new Son2();
+		        s2.oldBike();
+		        s2.fatherBike();
+		        s2.bike();
+
+		        
+		    }
+		}
