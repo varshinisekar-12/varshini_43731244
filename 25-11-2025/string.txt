@@ -1,0 +1,125 @@
+package aiml;
+
+import java.util.Locale;
+
+public class StringActions {
+
+    public static void main(String[] args) {
+
+        // toUpperCase() & toLowerCase()
+        String s = "Sachin";
+        System.out.println(s.toUpperCase());
+        System.out.println(s.toLowerCase());
+        System.out.println(s);
+
+        // trim()
+        String s2 = " Sachin ";
+        System.out.println(s2);
+        System.out.println(s2.trim());
+
+        // startsWith() & endsWith()
+        String s3 = "Sachin";
+        System.out.println(s3.startsWith("Sa"));
+        System.out.println(s3.endsWith("n"));
+
+        // charAt()
+        System.out.println(s3.charAt(0));
+        System.out.println(s3.charAt(3));
+
+        // length()
+        System.out.println(s3.length());
+
+        // intern()
+        String s4 = new String("Sachin");
+        String s5 = s4.intern();
+        System.out.println(s5);
+
+        // valueOf()
+        int a = 10;
+        String s6 = String.valueOf(a);
+        System.out.println(s6 + 10);
+
+        // replace()
+        String s7 = "Java is a programming language. Java is a platform. Java is an Island.";
+        String replaceString = s7.replace("Java", "Kava");
+        System.out.println(replaceString);
+
+        // Concatenation using +
+        String s8 = "Sachin" + " Tendulkar";
+        System.out.println(s8);
+
+        // concat() method
+        String c1 = "Sachin ";
+        String c2 = "Tendulkar";
+        String c3 = c1.concat(c2);
+        System.out.println(c3);
+
+        // equals() and equalsIgnoreCase()
+        String e1 = "Sachin";
+        String e2 = "Sachin";
+        String e3 = new String("Sachin");
+        String e4 = "Saurav";
+
+        System.out.println(e1.equals(e2));
+        System.out.println(e1.equals(e3));
+        System.out.println(e1.equals(e4));
+
+        // == operator
+        System.out.println(e1 == e2);
+        System.out.println(e1 == e3);
+
+        // compareTo()
+        String c4 = "Sachin";
+        String c5 = "Sachin";
+        String c6 = "Ratan";
+        System.out.println(c4.compareTo(c5));
+        System.out.println(c4.compareTo(c6));
+        System.out.println(c6.compareTo(c4));
+
+        // STRINGBUFFER METHODS
+        System.out.println("\n--- StringBuffer Examples ---");
+
+        StringBuffer sb1 = new StringBuffer("Hello ");
+        sb1.append("Java");
+        System.out.println(sb1);
+
+        StringBuffer sb2 = new StringBuffer("Hello ");
+        sb2.insert(1, "Java");
+        System.out.println(sb2);
+
+        StringBuffer sb3 = new StringBuffer("Hello");
+        sb3.replace(1, 3, "Java");
+        System.out.println(sb3);
+
+        StringBuffer sb4 = new StringBuffer("Hello");
+        sb4.delete(1, 3);
+        System.out.println(sb4);
+
+        StringBuffer sb5 = new StringBuffer("Hello");
+        sb5.reverse();
+        System.out.println(sb5);
+
+        // STRINGBUILDER METHODS
+        System.out.println("\n--- StringBuilder Examples ---");
+
+        StringBuilder sbb1 = new StringBuilder("Hello ");
+        sbb1.append("Java");
+        System.out.println(sbb1);
+
+        StringBuilder sbb2 = new StringBuilder("Hello ");
+        sbb2.insert(1, "Java");
+        System.out.println(sbb2);
+
+        StringBuilder sbb3 = new StringBuilder("Hello");
+        sbb3.replace(1, 3, "Java");
+        System.out.println(sbb3);
+
+        StringBuilder sbb4 = new StringBuilder("Hello");
+        sbb4.delete(1, 3);
+        System.out.println(sbb4);
+
+        StringBuilder sbb5 = new StringBuilder("Hello");
+        sbb5.reverse();
+        System.out.println(sbb5);
+    }
+}

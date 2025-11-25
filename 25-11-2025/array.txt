@@ -1,0 +1,168 @@
+package aiml;
+
+import java.util.Scanner;
+
+public class array {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        int[] arr = {10, 20, 30, 40, 50};
+        int n = arr.length;
+
+        while (true) {
+
+            System.out.println("\n====== ARRAY OPERATIONS ======");
+            System.out.println("1. Insert");
+            System.out.println("2. Delete");
+            System.out.println("3. Update");
+            System.out.println("4. Linear Search");
+            System.out.println("5. Binary Search");
+            System.out.println("6. Traverse");
+            System.out.println("7. Copy Array");
+            System.out.println("8. Find Max & Min");
+            System.out.println("9. Reverse Array");
+            System.out.println("10. Sort Array");
+            System.out.println("11. Exit");
+            System.out.print("Enter your choice: ");
+
+            int choice = sc.nextInt();
+
+            switch (choice) {
+
+                // 1. INSERT
+                case 1:
+                    System.out.print("Enter position (0-4): ");
+                    int pos = sc.nextInt();
+                    System.out.print("Enter value: ");
+                    int val = sc.nextInt();
+                    for (int i = n - 1; i > pos; i--) {
+                        arr[i] = arr[i - 1];
+                    }
+                    arr[pos] = val;
+                    System.out.println("Inserted.");
+                    break;
+
+                // 2. DELETE
+                case 2:
+                    System.out.print("Enter position to delete: ");
+                    int del = sc.nextInt();
+                    for (int i = del; i < n - 1; i++) {
+                        arr[i] = arr[i + 1];
+                    }
+                    arr[n - 1] = 0;
+                    System.out.println("Deleted.");
+                    break;
+
+                // 3. UPDATE
+                case 3:
+                    System.out.print("Enter index to update: ");
+                    int idx = sc.nextInt();
+                    System.out.print("Enter new value: ");
+                    int newVal = sc.nextInt();
+                    arr[idx] = newVal;
+                    System.out.println("Updated.");
+                    break;
+
+                // 4. LINEAR SEARCH
+                case 4:
+                    System.out.print("Enter target: ");
+                    int target = sc.nextInt();
+                    boolean found = false;
+                    for (int i = 0; i < n; i++) {
+                        if (arr[i] == target) {
+                            System.out.println("Found at index " + i);
+                            found = true;
+                        }
+                    }
+                    if (!found) System.out.println("Not found.");
+                    break;
+
+                // 5. BINARY SEARCH
+                case 5:
+                    System.out.print("Enter target: ");
+                    int x = sc.nextInt();
+                    int low = 0, high = n - 1;
+                    boolean got = false;
+                    while (low <= high) {
+                        int mid = (low + high) / 2;
+                        if (arr[mid] == x) {
+                            System.out.println("Found at index " + mid);
+                            got = true;
+                            break;
+                        } else if (arr[mid] < x) {
+                            low = mid + 1;
+                        } else {
+                            high = mid - 1;
+                        }
+                    }
+                    if (!got) System.out.println("Not found.");
+                    break;
+
+                // 6. TRAVERSE
+                case 6:
+                    System.out.println("Array elements:");
+                    for (int a : arr) System.out.print(a + " ");
+                    System.out.println();
+                    break;
+
+                // 7. COPY
+                case 7:
+                    int[] copy = new int[n];
+                    for (int i = 0; i < n; i++) {
+                        copy[i] = arr[i];
+                    }
+                    System.out.println("Copied array:");
+                    for (int c : copy) System.out.print(c + " ");
+                    System.out.println();
+                    break;
+
+                // 8. MAX & MIN
+                case 8:
+                    int max = arr[0], min = arr[0];
+                    for (int i = 1; i < n; i++) {
+                        if (arr[i] > max) max = arr[i];
+                        if (arr[i] < min) min = arr[i];
+                    }
+                    System.out.println("Max = " + max);
+                    System.out.println("Min = " + min);
+                    break;
+
+                // 9. REVERSE
+                case 9:
+                    int start = 0, end = n - 1;
+                    while (start < end) {
+                        int temp = arr[start];
+                        arr[start] = arr[end];
+                        arr[end] = temp;
+                        start++;
+                        end--;
+                    }
+                    System.out.println("Array Reversed.");
+                    break;
+
+                // 10. SORT
+                case 10:
+                    for (int i = 0; i < n - 1; i++) {
+                        for (int j = 0; j < n - 1 - i; j++) {
+                            if (arr[j] > arr[j + 1]) {
+                                int temp = arr[j];
+                                arr[j] = arr[j + 1];
+                                arr[j + 1] = temp;
+                            }
+                        }
+                    }
+                    System.out.println("Array Sorted.");
+                    break;
+
+                case 11:
+                    System.out.println("Exiting...");
+                    System.exit(0);
+
+                default:
+                    System.out.println("Invalid choice.");
+            }
+        }
+    }
+}
